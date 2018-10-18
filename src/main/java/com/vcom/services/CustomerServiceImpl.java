@@ -28,55 +28,53 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public List<Customer> getAllCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return customerDao.findAll();
 	}
 
 	@Override
 	public Customer addCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDao.save(customer);
 	}
 
 	@Override
 	public Customer updateCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDao.save(customer);
 	}
 
 	@Override
 	public boolean deleteCustomer(long customerId) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isDeleted = false;
+		
+		if(customerDao.existsById(customerId)) {
+			customerDao.deleteById(customerId);
+			isDeleted = true;
+		}
+		return isDeleted;
 	}
 
 	@Override
 	public boolean existsByCustomerMobileNumber(String customerMobileNumber) {
-		// TODO Auto-generated method stub
-		return false;
+		return customerDao.existsByCustomerMobileNumber(customerMobileNumber);
 	}
 
 	@Override
 	public boolean existsByEmailId(String emailId) {
-		// TODO Auto-generated method stub
-		return false;
+		return customerDao.existsByEmailId(emailId);
 	}
 
 	@Override
 	public Customer findByCustomerMobileNumber(String mobileNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDao.findByCustomerMobileNumber(mobileNumber);
 	}
 
 	@Override
 	public Customer findByEmailId(String emailId) {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDao.findByEmailId(emailId);
 	}
 
 	@Override
 	public List<Customer> findAllByLastName(String lastName) {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDao.findAllByLastName(lastName);
 	}
 }
