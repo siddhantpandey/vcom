@@ -27,9 +27,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ServicesBought {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long serviceId;
 	
+	
+
+
+
+
+
 	@NotEmpty(message="Service cannot be empty")
 	@Column(name="serviceactivated")
 	@Enumerated(EnumType.STRING)
@@ -62,7 +67,9 @@ public class ServicesBought {
 	
 	
 
-
+	public void setServiceId(long serviceId) {
+		this.serviceId = serviceId;
+	}
 	
 
 

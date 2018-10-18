@@ -17,20 +17,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.verizon.telecom.model.Customer;
+import com.verizon.telecom.model.ServicesBought;
 import com.verizon.telecom.services.CustomerService;
+import com.verizon.telecom.services.ServicesBoughtService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/")
+@RequestMapping("/customers")
 public class VcomRestApi {
 
 	@Autowired
 	CustomerService custService;
 	
-	//@Autowired
-	//ServicesBoughtService sbService;
+	@Autowired
+	ServicesBoughtService sbService;
 	
-	@GetMapping("/customers")
+	@GetMapping
 	public ResponseEntity<List<Customer>> getAllCustomers() {
 		return new ResponseEntity<>(custService.getAllCustomers(), HttpStatus.OK);
 	}
@@ -85,7 +87,7 @@ public class VcomRestApi {
 
 		return resp;
 	}
-	
+	//Post for entering customer details
 	@PostMapping
 	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
 		ResponseEntity<Customer> resp = null;
@@ -108,6 +110,26 @@ public class VcomRestApi {
 		return resp;
 	}
 
+	//post mapping for entering service
+	@PostMapping("/{serviceId}")
+	public ResponseEntity<ServicesBought> addService(@RequestBody ServicesBought service, @PathVariable("serviceId") long serviceId ) {
+		ResponseEntity<ServicesBought> resp = null;
+
+		if (sbService.existsByServiceId(service.getServiceId())) {
+			resp = new ResponseEntity<ServicesBought>(HttpStatus.ALREADY_REPORTED);
+		}
+
+		if (resp == null) {
+			service.setServiceId(serviceId);
+			ServicesBought sb = sbService.addServicesBought(service);
+			if (sb == null)
+				resp = new ResponseEntity<ServicesBought>(HttpStatus.BAD_REQUEST);
+			else
+				resp = new ResponseEntity<ServicesBought>(sb, HttpStatus.OK);
+		}
+		return resp;
+	}
+	//mapping to update customer
 	@PutMapping
 	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
 		ResponseEntity<Customer> resp = null;
@@ -134,7 +156,36 @@ public class VcomRestApi {
 		}
 		return resp;
 	}
+	/*
+	//mapping to update service bought
+	@PutMapping("/{serviceId}")
+	public ResponseEntity<ServicesBought> updateService(@RequestBody ServicesBought service,@PathVariable("serviceId") long serviceId) {
+		ResponseEntity<ServicesBought> resp = null;
 
+		ServicesBought sb = sbService.getServicesBoughtById(service.getServiceId());
+				
+		if (!customer.getEmailId().equals(c.getEmailId())) {
+			if (custService.existsByEmailId(customer.getEmailId())) {
+				resp = new ResponseEntity<Customer>(HttpStatus.ALREADY_REPORTED);
+			}
+		}
+
+		if (!customer.getCustomerMobileNumber().equals(c.getCustomerMobileNumber())) {
+			if (custService.existsByCustomerMobileNumber(customer.getCustomerMobileNumber())) {
+				resp = new ResponseEntity<Customer>(HttpStatus.ALREADY_REPORTED);
+			}
+		}
+
+		if (resp == null) {
+			c = custService.updateCustomer(customer);
+			if (c == null)
+				resp = new ResponseEntity<Customer>(HttpStatus.BAD_REQUEST);
+			else
+				resp = new ResponseEntity<Customer>(c, HttpStatus.OK);
+		}
+		return resp;
+	}
+*/
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteCustomer(@PathVariable("id") long customerId) {
 		ResponseEntity<Void> resp = null;
