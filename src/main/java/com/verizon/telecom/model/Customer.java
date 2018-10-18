@@ -1,4 +1,4 @@
-package com.vcom.model;
+package com.verizon.telecom.model;
 
 import java.time.LocalDate;
 
@@ -57,11 +57,11 @@ public class Customer {
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	
-	@OneToOne(mappedBy="customerHolderId",cascade=CascadeType.ALL,fetch=FetchType.LAZY) //two-way mapping to check retrieval
+	@OneToOne(mappedBy="customer",cascade=CascadeType.ALL,fetch=FetchType.LAZY) //two-way mapping to check retrieval
 	private ServicesBought services;
 	
 	public ServicesBought getServices() {
-		return services;
+		return this.services;
 	}
 
 	public void setServices(ServicesBought services) {
@@ -69,7 +69,7 @@ public class Customer {
 	}
 
 	public Customer() {
-		super();
+		//super();
 	}
 
 	public Customer(
@@ -79,7 +79,7 @@ public class Customer {
 			@NotEmpty(message = "Email Id can not be null") @Email(message = "Invalid Email Id") String emailId,
 			@Pattern(regexp = "\\d{10}", message = "mobile number can be ony 10 digits") String customerMobileNumber,
 			@NotEmpty(message = "Gender can not be null") Gender gender) {
-		super();
+		//super();
 		this.customerFirstName = customerFirstName;
 		this.customerLastName = customerLastName;
 		this.customerDateOfBirth = customerDateOfBirth;
