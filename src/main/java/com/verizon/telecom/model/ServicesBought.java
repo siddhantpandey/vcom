@@ -1,20 +1,26 @@
 package com.verizon.telecom.model;
 
-import java.time.LocalDate;	
+import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="servicesbought")
@@ -26,14 +32,17 @@ public class ServicesBought {
 	
 	@NotEmpty(message="Service cannot be empty")
 	@Column(name="serviceactivated")
+	@Enumerated(EnumType.STRING)
 	private Services services;
 	
 	@NotEmpty(message="Plan cannot be empty")
 	@Column(name="servicetype")
+	@Enumerated(EnumType.STRING)
 	private Plans plans;
 	
 	@NotEmpty(message="Package cannot be empty")
 	@Column(name="package")
+	@Enumerated(EnumType.STRING)
 	private Packages packages;
 	
 	@DateTimeFormat(iso=ISO.DATE)
@@ -41,25 +50,34 @@ public class ServicesBought {
 	@Column(name="doa")
 	private LocalDate dateOfActivation;
 	
-	@OneToOne
-	@JoinColumn(name="customerHolderId")
-	private Customer customer;
+	//@OneToOne
+	
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="services",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<Customer> customer;
 	
 	
 	
 	
-	public Customer getCustomer() {
-		return this.customer;
+	
+
+
+	
+
+
+	public List<Customer> getCustomer() {
+		return customer;
 	}
 
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(List<Customer> customer) {
 		this.customer = customer;
 	}
 
 
 	public Services getServices() {
-		return this.services;
+		return services;
 	}
 
 

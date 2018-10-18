@@ -1,6 +1,7 @@
 package com.verizon.telecom.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +12,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -21,6 +24,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="customers")
@@ -57,7 +62,9 @@ public class Customer {
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	
-	@OneToOne(mappedBy="customer",cascade=CascadeType.ALL,fetch=FetchType.LAZY) //two-way mapping to check retrieval
+	//@OneToOne(mappedBy="customer",cascade=CascadeType.ALL,fetch=FetchType.LAZY) //two-way mapping to check retrieval
+	@ManyToOne
+	@JoinColumn(name="serviceId")
 	private ServicesBought services;
 	
 	public ServicesBought getServices() {
