@@ -22,14 +22,14 @@ import com.vcom.services.ServicesBoughtService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/customers")
-public class VcomRestApi {
+@RequestMapping("/Customers")
+public class CustomerApi {
 
 	@Autowired
 	CustomerService custService;
 	
-	//@Autowired
-	//ServicesBoughtService sbService;
+	@Autowired
+	ServicesBoughtService sbService;
 	
 	@GetMapping
 	public ResponseEntity<List<Customer>> getAllCustomers() {
