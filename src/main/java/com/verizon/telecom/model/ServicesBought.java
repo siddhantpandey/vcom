@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -57,10 +59,9 @@ public class ServicesBought {
 	
 	//@OneToOne
 	
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="services",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private List<Customer> customer;
+	@ManyToOne
+	@JoinColumn(name="customerId")
+	private Customer customer;
 	
 	
 	
@@ -73,14 +74,25 @@ public class ServicesBought {
 	
 
 
-	public List<Customer> getCustomer() {
+	
+
+
+	public Customer getCustomer() {
 		return customer;
 	}
 
 
-	public void setCustomer(List<Customer> customer) {
+
+
+
+
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+
+
+
 
 
 	public Services getServices() {

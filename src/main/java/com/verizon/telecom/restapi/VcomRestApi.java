@@ -37,6 +37,11 @@ public class VcomRestApi {
 		return new ResponseEntity<>(custService.getAllCustomers(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/services")
+	public ResponseEntity<List<ServicesBought>> getAllServices() {
+		return new ResponseEntity<>(sbService.getAllServices(), HttpStatus.OK);
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") long customerId) {
 		ResponseEntity<Customer> resp;

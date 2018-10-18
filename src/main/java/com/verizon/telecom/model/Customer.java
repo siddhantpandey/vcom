@@ -58,20 +58,22 @@ public class Customer {
 	@Column(name="mno")
 	private String customerMobileNumber;
 	
-	@NotEmpty(message="Gender can not be null")
+	
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	
 	//@OneToOne(mappedBy="customer",cascade=CascadeType.ALL,fetch=FetchType.LAZY) //two-way mapping to check retrieval
-	@ManyToOne
-	@JoinColumn(name="serviceId")
-	private ServicesBought services;
+	@JsonIgnore
+	@OneToMany(mappedBy="services",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<ServicesBought> services;
 	
-	public ServicesBought getServices() {
-		return this.services;
+	
+
+	public List<ServicesBought> getServices() {
+		return services;
 	}
 
-	public void setServices(ServicesBought services) {
+	public void setServices(List<ServicesBought> services) {
 		this.services = services;
 	}
 

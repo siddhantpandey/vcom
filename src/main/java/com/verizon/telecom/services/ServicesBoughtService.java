@@ -1,5 +1,7 @@
 package com.verizon.telecom.services;
 
+import java.util.List;
+
 import com.verizon.telecom.model.ServicesBought;
 
 public interface ServicesBoughtService {
@@ -13,5 +15,7 @@ public interface ServicesBoughtService {
 	boolean deleteServicesBought(long servicesboughtId);
 
 	ServicesBought getServicesBoughtById(long servicesboughtId);
+
+	List<ServicesBought> getAllServices();
 
 }
