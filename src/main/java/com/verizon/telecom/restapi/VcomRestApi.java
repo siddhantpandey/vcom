@@ -161,41 +161,49 @@ public class VcomRestApi {
 		}
 		return resp;
 	}
-	/*
+	
 	//mapping to update service bought
-	@PutMapping("/{serviceId}")
-	public ResponseEntity<ServicesBought> updateService(@RequestBody ServicesBought service,@PathVariable("serviceId") long serviceId) {
+	@PutMapping("/services")
+	public ResponseEntity<ServicesBought> updateService(@RequestBody ServicesBought service) {
 		ResponseEntity<ServicesBought> resp = null;
 
 		ServicesBought sb = sbService.getServicesBoughtById(service.getServiceId());
 				
-		if (!customer.getEmailId().equals(c.getEmailId())) {
-			if (custService.existsByEmailId(customer.getEmailId())) {
-				resp = new ResponseEntity<Customer>(HttpStatus.ALREADY_REPORTED);
+		if (service.getServiceId()!=sb.getServiceId()) {
+			if (sbService.existsByServiceId(service.getServiceId())) {
+				resp = new ResponseEntity<ServicesBought>(HttpStatus.ALREADY_REPORTED);
 			}
 		}
 
-		if (!customer.getCustomerMobileNumber().equals(c.getCustomerMobileNumber())) {
-			if (custService.existsByCustomerMobileNumber(customer.getCustomerMobileNumber())) {
-				resp = new ResponseEntity<Customer>(HttpStatus.ALREADY_REPORTED);
-			}
-		}
+		
 
 		if (resp == null) {
-			c = custService.updateCustomer(customer);
-			if (c == null)
-				resp = new ResponseEntity<Customer>(HttpStatus.BAD_REQUEST);
+			sb = sbService.updateServicesBought(service);
+			if (sb == null)
+				resp = new ResponseEntity<ServicesBought>(HttpStatus.BAD_REQUEST);
 			else
-				resp = new ResponseEntity<Customer>(c, HttpStatus.OK);
+				resp = new ResponseEntity<ServicesBought>(sb, HttpStatus.OK);
 		}
 		return resp;
 	}
-*/
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteCustomer(@PathVariable("id") long customerId) {
 		ResponseEntity<Void> resp = null;
 
 		if (custService.deleteCustomer(customerId))
+			resp = new ResponseEntity<>(HttpStatus.OK);
+		else
+			resp = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+		return resp;
+	}
+	
+	@DeleteMapping("/services/{id}")
+	public ResponseEntity<Void> deleteService(@PathVariable("id") long serviceId) {
+		ResponseEntity<Void> resp = null;
+
+		if (sbService.deleteServicesBought(serviceId))
 			resp = new ResponseEntity<>(HttpStatus.OK);
 		else
 			resp = new ResponseEntity<>(HttpStatus.NOT_FOUND);
