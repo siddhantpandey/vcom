@@ -39,15 +39,31 @@ public class Customer {
 	@Size(min=5,max=15,message="userName must be of 5 to 15 chars")
 	private String username;
 	
-	@Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\\\S+$).{8,}",message="password must have a digit must occur at least once,"
+	@Pattern(regexp="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})",message="password must have a digit must occur at least once,"
 			+ " a lower case letter must occur at least once, "
 			+ "an upper case letter must occur at least once,"
 			+ " a special character must occur at least once,"
-			+ " no whitespace allowed in the entire string, at least 8 characters")
+			+ " no whitespace allowed in the entire string, at least 6-20 characters")
 	@NotEmpty(message="password can not be empty")
 	@Size(min=5,max=15,message="password must be of 5 to 15 chars")
 	private String password;
 	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@NotEmpty(message="firstName can not be empty")
 	@Size(min=5,max=15,message="firstName must be of 5 to 15 chars")
 	private String customerFirstName;
@@ -95,20 +111,27 @@ public class Customer {
 		//super();
 	}
 
+	
+
 	public Customer(
+			@NotEmpty(message = "userName can not be empty") @Size(min = 5, max = 15, message = "userName must be of 5 to 15 chars") String username,
+			@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})", message = "password must have a digit must occur at least once, a lower case letter must occur at least once, an upper case letter must occur at least once, a special character must occur at least once, no whitespace allowed in the entire string, at least 6-20 characters") @NotEmpty(message = "password can not be empty") @Size(min = 5, max = 15, message = "password must be of 5 to 15 chars") String password,
 			@NotEmpty(message = "firstName can not be empty") @Size(min = 5, max = 15, message = "firstName must be of 5 to 15 chars") String customerFirstName,
 			@NotEmpty(message = "lastName can not be empty") @Size(min = 5, max = 15, message = "lastName must be of 5 to 15 chars") String customerLastName,
 			@NotNull(message = "Date Of Birth can not be left blank") LocalDate customerDateOfBirth,
 			@NotEmpty(message = "Email Id can not be null") @Email(message = "Invalid Email Id") String emailId,
 			@Pattern(regexp = "\\d{10}", message = "mobile number can be ony 10 digits") String customerMobileNumber,
-			@NotEmpty(message = "Gender can not be null") Gender gender) {
-		//super();
+			Gender gender, List<ServicesBought> services) {
+		super();
+		this.username = username;
+		this.password = password;
 		this.customerFirstName = customerFirstName;
 		this.customerLastName = customerLastName;
 		this.customerDateOfBirth = customerDateOfBirth;
 		this.emailId = emailId;
 		this.customerMobileNumber = customerMobileNumber;
 		this.gender = gender;
+		this.services = services;
 	}
 
 	public String getCustomerFirstName() {
