@@ -35,9 +35,23 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long customerId;
 	
+	@NotEmpty(message="userName can not be empty")
+	@Size(min=5,max=15,message="userName must be of 5 to 15 chars")
+	private String username;
+	
+	@Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\\\S+$).{8,}",message="password must have a digit must occur at least once,"
+			+ " a lower case letter must occur at least once, "
+			+ "an upper case letter must occur at least once,"
+			+ " a special character must occur at least once,"
+			+ " no whitespace allowed in the entire string, at least 8 characters")
+	@NotEmpty(message="password can not be empty")
+	@Size(min=5,max=15,message="password must be of 5 to 15 chars")
+	private String password;
+	
 	@NotEmpty(message="firstName can not be empty")
 	@Size(min=5,max=15,message="firstName must be of 5 to 15 chars")
 	private String customerFirstName;
+	
 	
 	@NotEmpty(message="lastName can not be empty")
 	@Size(min=5,max=15,message="lastName must be of 5 to 15 chars")
