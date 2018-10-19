@@ -37,17 +37,17 @@ public class ServicesBought {
 
 
 
-	@NotEmpty(message="Service cannot be empty")
+	
 	@Column(name="serviceactivated")
 	@Enumerated(EnumType.STRING)
 	private Services services;
 	
-	@NotEmpty(message="Plan cannot be empty")
+	
 	@Column(name="servicetype")
 	@Enumerated(EnumType.STRING)
 	private Plans plans;
 	
-	@NotEmpty(message="Package cannot be empty")
+	
 	@Column(name="package")
 	@Enumerated(EnumType.STRING)
 	private Packages packages;

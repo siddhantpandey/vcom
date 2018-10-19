@@ -116,8 +116,8 @@ public class VcomRestApi {
 	}
 
 	//post mapping for entering service
-	@PostMapping("/{serviceId}")
-	public ResponseEntity<ServicesBought> addService(@RequestBody ServicesBought service, @PathVariable("serviceId") long serviceId ) {
+	@PostMapping("/services")
+	public ResponseEntity<ServicesBought> addService(@RequestBody ServicesBought service ) {
 		ResponseEntity<ServicesBought> resp = null;
 
 		if (sbService.existsByServiceId(service.getServiceId())) {
@@ -125,7 +125,7 @@ public class VcomRestApi {
 		}
 
 		if (resp == null) {
-			service.setServiceId(serviceId);
+			//service.setServiceId(serviceId);
 			ServicesBought sb = sbService.addServicesBought(service);
 			if (sb == null)
 				resp = new ResponseEntity<ServicesBought>(HttpStatus.BAD_REQUEST);

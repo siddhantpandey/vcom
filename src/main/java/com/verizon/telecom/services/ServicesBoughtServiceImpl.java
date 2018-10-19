@@ -64,8 +64,8 @@ public class ServicesBoughtServiceImpl implements ServicesBoughtService{
 
 	@Override
 	public List<ServicesBought> getAllServices() {
-		servicesDao.findAll();
-		return null;
+		return servicesDao.findAll();
+		
 	}
 	
 	
