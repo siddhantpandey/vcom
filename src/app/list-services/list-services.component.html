@@ -1,0 +1,54 @@
+
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+
+            <table>
+                <thead>
+                  <tr class="table100-head">
+                    <th class="column1">Customer Id</th>
+                    <th class="column2">Customer Name</th>
+                    <th class="column3">Email</th>
+                    <th class="column4">Mobile Number</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                    <tr>  
+                      <td class="column1">{{customers.customerId}}</td>
+                      <td class="column2">{{customers.customerFirstName}}</td>
+                      <td class="column3">{{customers.emailId}}</td>
+                      <td class="column4">{{customers.customerMobileNumber}}</td>
+                    </tr>
+                </tbody>
+              </table><br/><br/>
+
+          <h3 align="center">Services Subscribed</h3><br/>
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Service Id</th>
+								<th class="column2">Description</th>
+								<th class="column3">Plans</th>
+								<th class="column4">Package</th>
+							</tr>
+						</thead>
+						<tbody *ngFor="let service of services"> 
+								<tr  *ngIf="check(service)">  
+									<td class="column1">{{service.serviceId}}</td>
+									<td class="column2">{{service.services}}</td>
+									<td class="column3">{{service.plans}}</td>
+									<td class="column4">{{service.packages}}</td>
+									<td class="column5"><input type="button" value="Pay/View Bill" (click)="navigate(service.serviceId,customers.customerId)"></td>
+                </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
