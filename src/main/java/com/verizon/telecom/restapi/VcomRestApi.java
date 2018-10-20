@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.verizon.telecom.model.Bill;
 import com.verizon.telecom.model.Customer;
 import com.verizon.telecom.model.ServicesBought;
+import com.verizon.telecom.services.BillService;
 import com.verizon.telecom.services.CustomerService;
 import com.verizon.telecom.services.ServicesBoughtService;
 
@@ -31,6 +33,9 @@ public class VcomRestApi {
 	
 	@Autowired
 	ServicesBoughtService sbService;
+	
+	@Autowired
+	BillService bService;
 	
 	@GetMapping
 	public ResponseEntity<List<Customer>> getAllCustomers() {
@@ -210,5 +215,38 @@ public class VcomRestApi {
 
 		return resp;
 	}
+	
+	//Get Mapping for bills per service
+	@GetMapping("/getbillsForService/{cid}/{sid}")
+	public ResponseEntity<List<Bill>> fetchBillForParticularService(@PathVariable("cid") long customerId, @PathVariable("sid") long serviceId){
+		return new ResponseEntity<>(bService.getBillsOfParticularService(customerId, serviceId), HttpStatus.OK);
+	}
+	
+	@GetMapping("/getAllbills/{id}")
+	public ResponseEntity<List<Bill>> fetchAllBills(@PathVariable("id") long customerId){
+		return new ResponseEntity<>(bService.getAllBills(customerId), HttpStatus.OK);
+	}
+	
+	
+	//Post for paying bills
+		@PostMapping("/paybill")
+		public ResponseEntity<Bill> payBill(@RequestBody Bill bill) {
+			ResponseEntity<Bill> resp = null;
+
+			if (bService.existsByBillId(bill.getBillId())) {
+				resp = new ResponseEntity<Bill>(HttpStatus.ALREADY_REPORTED);
+			}
+			
+			if (resp == null) {
+				Bill b = bService.payBill(bill);
+				if (b == null)
+					resp = new ResponseEntity<Bill>(HttpStatus.BAD_REQUEST);
+				else
+					resp = new ResponseEntity<Bill>(b, HttpStatus.OK);
+			}
+			return resp;
+		}
+
+	
 	
 }
