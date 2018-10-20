@@ -1,0 +1,83 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+#image {
+  background-image: url("/assets/login.jpeg");
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.column1 {
+  width: 55%;
+  float: left;
+}
+
+.content {
+  width: 45%;
+  max-width: 70%;
+  float: right;
+  background-color: #fcf3f2;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.container {
+  padding: 16px;
+  background-color: #fcf3f2;
+  border-radius: 10px;
+  margin: auto 0px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: White;
+  border-bottom: 2px solid Gray;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  background-color: White;
+  outline: none;
+  border-bottom: 2px solid Red;
+  transform: scale(1.03);
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.registerbtn {
+  background-color: royalblue;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 1;
+}
+
+.registerbtn:hover {
+  background-color: blue;
+}
+
+a {
+  color: dodgerblue;
+}
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
