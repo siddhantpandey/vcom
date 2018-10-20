@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f25d;">
+    <a class="navbar-brand" routerLink="/">Welcome To WaterLine Technologies</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/plans">Plans</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/aboutus">About Us</a>
+        </li>
+        <li class="nav-item">
+                <ng-template #content let-modal>
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label >Our Support Team</label>
+                            </div>
+                          </form>
+                        </div>
+                        
+                      </ng-template>
+          <a class="nav-link" (click)="open(content)">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div style="padding-left:0.5px">
+      <router-outlet></router-outlet>
+    </div>
