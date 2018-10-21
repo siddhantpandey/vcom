@@ -1,0 +1,14 @@
+.head2 {
+    float: Right;
+    width: 30%;
+    padding: 10px;
+  }
+  .head2 ul {
+    float: right;
+    text-decoration: underline;
+  }
+  nav ul li {
+    display: inline;
+    float: Right;
+    border-left: 2px solid white;
+  }
