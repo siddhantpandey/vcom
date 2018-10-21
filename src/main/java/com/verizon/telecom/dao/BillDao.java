@@ -10,7 +10,7 @@ import com.verizon.telecom.model.Bill;
 @Repository
 public interface BillDao extends JpaRepository<Bill , Long> {
 	List<Bill> findAllByCustomerId(long customerId);
-	//List<Bill> findAllByCustomerAndServiceId(long customerId, long serviceId);
+	List<Bill> findAllByServiceId(long serviceId);
 	boolean existsByBillId(long billId);
 
 }

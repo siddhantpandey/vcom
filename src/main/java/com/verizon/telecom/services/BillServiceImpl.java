@@ -15,9 +15,8 @@ public class BillServiceImpl implements BillService{
 	private BillDao billDao;
 	
 	@Override
-	public List<Bill> getBillsOfParticularService(long customerId, long serviceId) {
-		//return billDao.findAllByCustomerAndServiceId(customerId, serviceId);
-		return null;
+	public List<Bill> getBillsOfParticularService(long serviceId) {
+		return billDao.findAllByServiceId(serviceId);		
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package com.verizon.telecom.restapi;
 
+import java.util.ArrayList;
 import java.util.Collections	;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -219,7 +221,27 @@ public class VcomRestApi {
 	//Get Mapping for bills per service
 	@GetMapping("/getbillsForService/{cid}/{sid}")
 	public ResponseEntity<List<Bill>> fetchBillForParticularService(@PathVariable("cid") long customerId, @PathVariable("sid") long serviceId){
-		return new ResponseEntity<>(bService.getBillsOfParticularService(customerId, serviceId), HttpStatus.OK);
+		ResponseEntity<List<Bill>> resp = null;
+		
+		List<Bill> result =  bService.getAllBills(customerId);
+		List<Bill> fin = new ArrayList<Bill>();
+		if(result!=null)
+		{
+			for(int i=0; i<result.size(); i++)
+			{
+				if(result.get(i).getServiceId() == serviceId)
+				{
+					fin.add(result.get(i));
+				}
+				
+			}
+			resp = new ResponseEntity<>(fin, HttpStatus.OK);
+		} 
+		else {
+			resp = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		return resp;
 	}
 	
 	@GetMapping("/getAllbills/{id}")
