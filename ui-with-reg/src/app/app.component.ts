@@ -9,6 +9,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent {
   title = "waterline";
   closeResult: string;
+  
   constructor(private modalService: NgbModal) {}
 
   open(content) {
@@ -16,6 +17,11 @@ export class AppComponent {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  openLogin(login) {
+    this.modalService.open(login, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
     });
   }
 

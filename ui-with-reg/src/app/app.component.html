@@ -1,10 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f25d;">
-    <a class="navbar-brand" routerLink="/">Welcome To WaterLine Technologies</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning" >
+    
+  <a class="navbar-brand" routerLink="/">
+    <img src="assets/logo.png" height="30" class="d-inline-block align-top"
+      alt="vcom logo">
+  </a>
+  
+  
+   
+    <div  id="navbarNav" class="collapse navbar-collapse">
+      
+      <ul class=" nav navbar-nav navbar-left">
         <li class="nav-item active">
           <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -18,25 +23,104 @@
           <a class="nav-link" routerLink="/aboutus">About Us</a>
         </li>
         <li class="nav-item">
-                <ng-template #content let-modal>
-                        <div class="modal-header">
-                          <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-                          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-                              <label >Our Support Team</label>
-                            </div>
-                          </form>
-                        </div>
-                        
-                      </ng-template>
-          <a class="nav-link" (click)="open(content)">Contact Us</a>
-        </li>
-      </ul>
+          <ng-template #content let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label >Our Support Team</label>
+                      </div>
+                    </form>
+                  </div>
+                  
+                </ng-template>
+    <a class="nav-link" (click)="open(content)">Contact Us</a>
+  </li>
+</ul>
+<div style="margin-left: 400px;">
+<ul class="nav navbar-nav navbar-right">
+    <div class=text-right>
+        <form class="form-inline">
+          <div class="md-form my-0">
+          <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" routerLink="/register">Register</button>
+          <ng-template #login let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Login</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+            
+          </ng-template>
+          <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" (click)="openLogin(login)">Login</button>
+          </div>
+        </form>
+      </div>
+    
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="glyphicon glyphicon-user"></span> 
+                  <strong>Nombre</strong>
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+              </a>
+              <ul class="dropdown-menu">
+                  <li>
+                      <div class="navbar-login">
+                          <div class="row">
+                              <div class="col-lg-4">
+                                  <p class="text-center">
+                                      <span class="glyphicon glyphicon-user icon-size"></span>
+                                  </p>
+                              </div>
+                              <div class="col-lg-8">
+                                  <p class="text-left"><strong>Nombre Apellido</strong></p>
+                                  <p class="text-left small">correoElectronico@email.com</p>
+                                  <p class="text-left">
+                                      <a href="#" class="btn btn-primary btn-block btn-sm">Actualizar Datos</a>
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                      <div class="navbar-login navbar-login-session">
+                          <div class="row">
+                              <div class="col-lg-12">
+                                  <p>
+                                      <a href="#" class="btn btn-danger btn-block">Log Out</a>
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </li>
+      </ul> 
+      
+    </div>
+       
+      
     </div>
   </nav>
   <div style="padding-left:0.5px">
