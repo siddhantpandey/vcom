@@ -16,7 +16,7 @@ import { BillingComponent } from './billing/billing.component';
 
 
 const paths: Routes = [
-  { path: "", component: LoginhomeComponent },
+  { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },

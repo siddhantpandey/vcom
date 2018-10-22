@@ -13,10 +13,10 @@ Phone: {{customer.customerMobileNumber}}</textarea>
             <div id="logo">
 
               <div id="logohelp">
-                <input id="imageloc" type="text" size="50" value="" /><br />
+                <input id="imageloc" type="text" size="50" value=""  readonly/><br />
                 (max width: 540px, max height: 100px)
               </div>
-              <img id="image" src="assets/logo.jpg" alt="logo" />
+              <img id="image" src="assets/logo.png" width="200px" height="80px" alt="logo" />
             </div>
 		
 		</div>
@@ -25,7 +25,7 @@ Phone: {{customer.customerMobileNumber}}</textarea>
 		
 		<div id="customer">
 
-            <textarea id="customer-title">WaterLine
+            <textarea id="customer-title" readonly>VCom
 Monthly Bill</textarea>
 
             <table id="meta">
@@ -58,11 +58,11 @@ Monthly Bill</textarea>
 		  </tr>
 		  
 		  <tr class="item-row">
-		      <td class="item-name"><div class="delete-wpr"><textarea>{{services.serviceId}}</textarea></div></td>
-		      <td class="description"><textarea>{{services.services}}</textarea></td>
-		      <td><textarea class="cost">{{services.plans}}</textarea></td>
-		      <td><textarea class="qty">1 Month</textarea></td>
-		      <td><span class="price">{{services.packages.substring(1,4)}}</span></td>
+		      <td class="item-name"><div class="delete-wpr"><textarea readonly>{{services.serviceId}}</textarea></div></td>
+		      <td class="description"><textarea readonly>{{services.services}}</textarea></td>
+		      <td><textarea class="cost" readonly>{{services.plans}}</textarea></td>
+		      <td><textarea class="qty" readonly>1 Month</textarea></td>
+		      <td><span class="price" readonly>{{services.packages.substring(1,4)}}</span></td>
 		  </tr>
 		  
 		  <tr>
@@ -80,7 +80,7 @@ Monthly Bill</textarea>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Tax</td>
 
-		      <td class="total-value"><textarea id="paid">0.00</textarea></td>
+		      <td class="total-value"><textarea id="paid" readonly>0.00</textarea></td>
 		  </tr>
 		  <tr>
 		      <td colspan="2" class="blank"> </td>
