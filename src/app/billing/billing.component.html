@@ -4,11 +4,11 @@
 
 	<div id="page-wrap">
 
-		<textarea id="header">BILL</textarea>
+		<textarea id="header" readonly>BILL</textarea>
 		
 		<div id="identity">
 		
-            <textarea id="address">{{customer.customerId}}
+            <textarea id="address" readonly>{{customer.customerId}}
 {{customer.customerFirstName}}
 
 Phone: {{customer.customerMobileNumber}}</textarea>
@@ -28,7 +28,7 @@ Phone: {{customer.customerMobileNumber}}</textarea>
 		
 		<div id="customer">
 
-            <textarea id="customer-title">WaterLine
+            <textarea id="customer-title" readonly>WaterLine
 Monthly Bill</textarea>
 
             <table id="meta">
@@ -39,11 +39,11 @@ Monthly Bill</textarea>
                 <tr>
 
                     <td class="meta-head">Date</td>
-                    <td>{{settime()}}</td>
+                    <td ng-readonly="true">{{settime()}}</td>
                 </tr>
                 <tr>
                     <td class="meta-head">Plan</td>
-                    <td><div class="due">{{services.packages}}</div></td>
+                    <td ng-readonly="true"><div class="due">{{services.packages}}</div></td>
                 </tr>
 
             </table>
@@ -61,34 +61,34 @@ Monthly Bill</textarea>
 		  </tr>
 		  
 		  <tr class="item-row">
-		      <td class="item-name"><div class="delete-wpr"><textarea>{{services.serviceId}}</textarea></div></td>
-		      <td class="description"><textarea>{{services.services}}</textarea></td>
-		      <td><textarea class="cost">{{services.plans}}</textarea></td>
-		      <td><textarea class="qty">1 Month</textarea></td>
-		      <td><span class="price">{{services.packages.substring(1,4)}}</span></td>
+		      <td class="item-name"><div class="delete-wpr"><textarea readonly>{{services.serviceId}}</textarea></div></td>
+		      <td class="description"><textarea readonly>{{services.services}}</textarea></td>
+		      <td><textarea class="cost" readonly>{{services.plans}}</textarea></td>
+		      <td><textarea readonly class="qty"> 1 Month</textarea></td>
+		      <td><span class="price" ng-readonly="true">{{services.packages.substring(1,4)}}</span></td>
 		  </tr>
 		  
 		  <tr>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Subtotal</td>
-		      <td class="total-value"><div id="subtotal">{{services.packages.substring(1,4)}}</div></td>
+		      <td class="total-value" ng-readonly="true"><div id="subtotal">{{services.packages.substring(1,4)}}</div></td>
 		  </tr>
 		  <tr>
 
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Total</td>
-		      <td class="total-value"><div id="total">{{services.packages.substring(1,4)}}</div></td>
+		      <td class="total-value" ng-readonly="true"><div id="total">{{services.packages.substring(1,4)}}</div></td>
 		  </tr>
 		  <tr>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Tax</td>
 
-		      <td class="total-value"><textarea id="paid">0.00</textarea></td>
+		      <td class="total-value"><textarea readonly id="paid">0.00</textarea></td>
 		  </tr>
 		  <tr>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line balance">Balance to be paid</td>
-		      <td class="total-value balance"><div class="due">{{services.packages.substring(1,4)}}</div></td>
+		      <td class="total-value balance" ng-readonly="true"><div class="due">{{services.packages.substring(1,4)}}</div></td>
 		  </tr>
 		
 		</table>
