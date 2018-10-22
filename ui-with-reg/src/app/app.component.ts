@@ -9,8 +9,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent {
   title = "waterline";
   closeResult: string;
-  
-  constructor(private modalService: NgbModal) {}
+  status: boolean;
+  constructor(private modalService: NgbModal) {
+    this.status=false;
+  }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

@@ -42,9 +42,9 @@
     <a class="nav-link" (click)="open(content)">Contact Us</a>
   </li>
 </ul>
-<div style="margin-left: 400px;">
+<div style="margin-left: 300px;">
 <ul class="nav navbar-nav navbar-right">
-    <div class=text-right>
+    <li *ngIf="!status">
         <form class="form-inline">
           <div class="md-form my-0">
           <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" routerLink="/register">Register</button>
@@ -75,12 +75,12 @@
           <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" (click)="openLogin(login)">Login</button>
           </div>
         </form>
-      </div>
-    
-          <li class="dropdown">
+      
+    </li>
+          <li class="dropdown" *ngIf="status">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <span class="glyphicon glyphicon-user"></span> 
-                  <strong>Nombre</strong>
+                  <strong>Siddhant</strong>
                   <span class="glyphicon glyphicon-chevron-down"></span>
               </a>
               <ul class="dropdown-menu">
@@ -93,10 +93,10 @@
                                   </p>
                               </div>
                               <div class="col-lg-8">
-                                  <p class="text-left"><strong>Nombre Apellido</strong></p>
-                                  <p class="text-left small">correoElectronico@email.com</p>
+                                  <p class="text-left"><strong>Siddhant Pandey</strong></p>
+                                  <p class="text-left small">siddhantpandey59@gmail.com</p>
                                   <p class="text-left">
-                                      <a href="#" class="btn btn-primary btn-block btn-sm">Actualizar Datos</a>
+                                      <a href="#" class="btn btn-primary btn-block btn-sm">Profile</a>
                                   </p>
                               </div>
                           </div>
