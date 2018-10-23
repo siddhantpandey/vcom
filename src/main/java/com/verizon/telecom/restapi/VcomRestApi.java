@@ -61,6 +61,17 @@ public class VcomRestApi {
 		return resp;
 	}
 	
+	@GetMapping("/services/{id}")
+	public ResponseEntity<ServicesBought> getServicesById(@PathVariable("id") long serviceId) {
+		ResponseEntity<ServicesBought> resp;
+		ServicesBought s = sbService.getServicesBoughtById(serviceId);
+		if (s == null)
+			resp = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		else
+			resp = new ResponseEntity<>(s, HttpStatus.OK);
+		return resp;
+	}
+	
 	
 	@GetMapping("/{field}/{srhValue}")
 	public ResponseEntity<List<Customer>> getAllCustomers(@PathVariable("field") String fieldBy,
