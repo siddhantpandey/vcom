@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.verizon.telecom.model.Bill;
 import com.verizon.telecom.model.Customer;
+import com.verizon.telecom.model.Months;
 import com.verizon.telecom.model.ServicesBought;
 import com.verizon.telecom.services.BillService;
 import com.verizon.telecom.services.CustomerService;
@@ -243,6 +244,33 @@ public class VcomRestApi {
 		
 		return resp;
 	}
+	
+	//Get Mapping for bills per service
+		@GetMapping("/getbillsMonthWise/{cid}/{month}")
+		public ResponseEntity<List<Bill>> fetchBillForParticularServiceMonthWise(@PathVariable("cid") long customerId, @PathVariable("month") Months month){
+			ResponseEntity<List<Bill>> resp = null;
+			
+			List<Bill> result =  bService.getAllBills(customerId);
+			List<Bill> fin = new ArrayList<Bill>();
+			if(result!=null)
+			{
+				for(int i=0; i<result.size(); i++)
+				{
+					if(result.get(i).getMonth() == month)
+					{
+						fin.add(result.get(i));
+					}
+					
+				}
+				resp = new ResponseEntity<>(fin, HttpStatus.OK);
+			} 
+			else {
+				resp = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+			
+			return resp;
+		}
+		
 	
 	@GetMapping("/getAllbills/{id}")
 	public ResponseEntity<List<Bill>> fetchAllBills(@PathVariable("id") long customerId){

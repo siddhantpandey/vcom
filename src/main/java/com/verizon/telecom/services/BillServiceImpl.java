@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.verizon.telecom.dao.BillDao;
 import com.verizon.telecom.model.Bill;
+import com.verizon.telecom.model.Months;
 
 @Service
 public class BillServiceImpl implements BillService{
@@ -32,6 +33,11 @@ public class BillServiceImpl implements BillService{
 	@Override
 	public boolean existsByBillId(long billId) {
 		return billDao.existsByBillId(billId);
+	}
+
+	@Override
+	public List<Bill> getBillsOfParticularServiceMonthWise(Months month) {
+		return billDao.findAllByMonth(month);	
 	}
 
 }
