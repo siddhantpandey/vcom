@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ServicesBought {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long serviceId;
 	
 	
