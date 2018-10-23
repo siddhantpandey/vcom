@@ -26,14 +26,14 @@ export class PlansComponent implements OnInit {
   //window.alert(this.id);
   }
   
-  save(cid:number){
+  save(cid:User){
     let d=new Date();
     let x:string;
     console.log(cid);     
 
     x=formatDate(d, 'yyyy-MM-dd', 'en-US', '+0530');
     this.plan.setDate(x);
-    this.plan.setCustomerId(cid);
+    this.plan.setCustomer(cid);
     
     this.ts.addPlan(this.plan).subscribe(data=>
       {

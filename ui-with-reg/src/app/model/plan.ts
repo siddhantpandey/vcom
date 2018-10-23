@@ -18,13 +18,13 @@ export class Plan {
 
 	private dateOfActivation:String;
 
-    private customerId:number;
+    private customer:User;
     
     public setDate(dateOfActivation:String){
         this.dateOfActivation=dateOfActivation;
     }
-    public setCustomerId(user:number){
-        this.customerId=user;
+    public setCustomer(user:User){
+        this.customer=user;
     }
   
 }
