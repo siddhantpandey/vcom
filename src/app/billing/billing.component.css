@@ -44,14 +44,14 @@ table td, table th { border: 1px solid black; padding: 5px; }
 #items textarea { width: 80px; height: 50px; }
 #items tr.item-row td { border: 0; vertical-align: top; }
 #items td.description { width: 300px; }
-#items td.item-name { width: 175px; }
-#items td.description textarea, #items td.item-name textarea { width: 100%; }
+#items td.item-name { width: 175px;}
+#items td.description textarea, #items td.item-name textarea { width: 100%; text-align: center }
 #items td.total-line { border-right: 0; text-align: right; }
 #items td.total-value { border-left: 0; padding: 10px; }
-#items td.total-value textarea { height: 20px; background: none; }
+#items td.total-value textarea { height: 20px; background: none; text-align: center }
 #items td.balance { background: #eee; }
 #items td.blank { border: 0; }
-
+td{text-align: center}
 #terms { text-align: center; margin: 20px 0 0 0; }
 #terms h5 { text-transform: uppercase; font: 13px Helvetica, Sans-Serif; letter-spacing: 10px; border-bottom: 1px solid black; padding: 0 0 8px 0; margin: 0 0 8px 0; }
 #terms textarea { width: 100%; text-align: center;}
