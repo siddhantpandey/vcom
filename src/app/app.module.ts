@@ -18,7 +18,7 @@ const paths: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "billing", component: BillingComponent},
-  { path: "billing/:serviceId/:customerId", component: BillingComponent},
+  { path: "billing/:billId/:customerId/:serviceId", component: BillingComponent},
   { path: "list-services", component: ListServicesComponent}
 ];
 

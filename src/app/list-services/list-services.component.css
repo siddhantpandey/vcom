@@ -22,11 +22,10 @@
       outline: none;
       border: none !important;
   }
-  
 
   .container-table100 {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -40,6 +39,13 @@
   
   .wrap-table100 {
     width: 1170px;
+    height: 100%;
+  }
+
+  h2{
+    margin-bottom: 5%;
+    color: white;
+    font-family: 'Cambria';
   }
   
   table {
@@ -132,69 +138,28 @@
   }
   
   
-  @media screen and (max-width: 992px) {
-    table {
-      display: block;
-    }
-    table > *, table tr, table td, table th {
-      display: block;
-    }
-    table thead {
-      display: none;
-    }
-    table tbody tr {
-      height: auto;
-      padding: 37px 0;
-    }
-    table tbody tr td ,.newdiv{
-      padding-left: 40% !important;
-      margin-bottom: 24px;
-    }
-    table tbody tr td:last-child {
-      margin-bottom: 0;
-    }
-    table tbody tr td:before {
-      font-family: OpenSans-Regular;
-      font-size: 14px;
-      color: #999999;
-      line-height: 1.2;
-      font-weight: unset;
-      position: absolute;
-      width: 40%;
-      left: 30px;
-      top: 0;
-    }
-    table tbody tr td:nth-child(1):before {
-      content: "Date";
-    }
-    table tbody tr td:nth-child(2):before {
-      content: "Order ID";
-    }
-    table tbody tr td:nth-child(3):before {
-      content: "Name";
-    }
-    table tbody tr td:nth-child(4):before {
-      content: "Price";
-    }
-    table tbody tr td:nth-child(5):before {
-      content: "Quantity";
-    }
+  
+
+  .custom-select {
+    position: relative;
+    font-family: 'Cambria';
     
-    .column4,
-    .column5,{
-      text-align: left;
-    }
-  
-    .column4,
-    .column5,
-    .column1,
-    .column2,
-    .column3 {
-      width: 100%;
-    }
-  
-    tbody tr {
-      font-size: 14px;
-    }
   }
+
+  .custom-select select{
+    font-family: 'Cambria';
+    font-size: 18px;
+    width: 200px;
+    font-weight: bold;
+  }
+
+  .custom-select select option{
+    font-size: 18px;
+  }
+
+  .select-selected {
+    background-color: DodgerBlue;
+  }
+
+  
   

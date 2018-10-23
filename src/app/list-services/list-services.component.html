@@ -4,6 +4,7 @@
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
+				<h2 align="center">LISTING BILLS</h2>
 				<div class="table100">
 
             <table>
@@ -25,27 +26,43 @@
                 </tbody>
               </table><br/><br/>
 
-          <h3 align="center">Services Subscribed</h3><br/>
+				
+					<div align="center" class="custom-select" style="width:100%;">
+						<select (change)="selectOption($event.target.value)">
+							<option [value]="month.id" *ngFor="let month of months">{{month.name}}</option>
+						</select>
+					</div><br/>
+
+      <div *ngIf="showdetails&&bills.length!=0" >
+					<h3 align="center">Bills</h3><br/>
 					<table>
 						<thead>
 							<tr class="table100-head">
-								<th class="column1">Service Id</th>
-								<th class="column2">Description</th>
-								<th class="column3">Plans</th>
-								<th class="column4">Package</th>
+								<th class="column1">Bill Id</th>
+								<th class="column2">Service Id</th>
+								<th class="column3">Description</th>
+								<th class="column4">Plans</th>
+								<th class="column5">Amount</th>
+								
 							</tr>
 						</thead>
-						<tbody *ngFor="let service of services"> 
-								<tr  *ngIf="check(service)">  
-									<td ng-readonly="true" class="column1">{{service.serviceId}}</td>
-									<td ng-readonly="true" class="column2">{{service.services}}</td>
-									<td ng-readonly="true" class="column3">{{service.plans}}</td>
-									<td ng-readonly="true" class="column4">{{service.packages}}</td>
-									<td class="column5"><input type="button" value="Pay/View Bill" (click)="navigate(service.serviceId,customers.customerId)"></td>
+						<tbody *ngFor="let bill of bills"> 
+								<tr >  
+									<td ng-readonly="true" class="column1">{{bill.billId}}</td>
+									<td ng-readonly="true" class="column2">{{bill.serviceId}}</td>
+									<td ng-readonly="true" class="column3">{{getdesc(bill.serviceId)}}</td>
+									<td ng-readonly="true" class="column3">{{getplans(bill.serviceId)}}</td>
+									<td ng-readonly="true" class="column4">{{bill.amount}}</td>
+									<td class="column5"><button type="button" [disabled]="checkdisable(bill)" (click)="navigate(bill.billId,customers.customerId,bill.serviceId)">Pay/View Bill</button></td>
                 </tr>
 						</tbody>
 					</table>
 				</div>
+
+			 <div *ngIf="showdetails &&bills.length==0" >
+				<h3 align="center">No Records found</h3><br/>
+			 </div>
+			</div>
 			</div>
 		</div>
 	</div>

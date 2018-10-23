@@ -32,9 +32,13 @@ Phone: {{customer.customerMobileNumber}}</textarea>
 Monthly Bill</textarea>
 
             <table id="meta">
+				<tr>
+					<td class="meta-head">Bill ID </td>
+					<td>{{bill.billId}}</td>
+					</tr>
                 <tr>
                     <td class="meta-head">Bill Month </td>
-                    <td></td>
+                    <td>{{bill.month}}</td>
                 </tr>
                 <tr>
 
@@ -61,8 +65,8 @@ Monthly Bill</textarea>
 		  </tr>
 		  
 		  <tr class="item-row">
-		      <td class="item-name"><div class="delete-wpr"><textarea readonly>{{services.serviceId}}</textarea></div></td>
-		      <td class="description"><textarea readonly>{{services.services}}</textarea></td>
+		      <td class="item-name"><div class="delete-wpr"><textarea readonly>{{bill.serviceId}}</textarea></div></td>
+		      <td class="description"><textarea readonly>{{bill.serviceId}}</textarea></td>
 		      <td><textarea class="cost" readonly>{{services.plans}}</textarea></td>
 		      <td><textarea readonly class="qty"> 1 Month</textarea></td>
 		      <td><span class="price" ng-readonly="true">{{services.packages.substring(1,4)}}</span></td>

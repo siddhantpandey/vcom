@@ -24,4 +24,16 @@ export class VcomService {
     return this.http.get(`${this.baseUrl}/services`);
   }
 
+  getBillsByMonth(customerId:number,month:string):Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/getbillsMonthWise/${customerId}/${month}`);
+  }
+
+  getBillById(billId:number):Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/getBill/${billId}`);
+  }
+
+
+
 }
