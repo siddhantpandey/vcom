@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   loginImg: string;
   logoImg: string;
   user:User;
+  id:string;
   constructor(private router: Router,private ar:ActivatedRoute,private ts:TelecomService) {
     this.loginImg = "/assets/login.jpeg";
     this.logoImg = "/assets/logo.jpg";
@@ -22,9 +23,10 @@ export class RegisterComponent implements OnInit {
   }
   save()
   {
+    this.id=this.user.emailId;
     this.ts.add(this.user).subscribe(data=>
       {
-        this.router.navigateByUrl("/?opt=a&id=");
+        this.router.navigate(['/plans',this.id]);
       },
       error=>
       {

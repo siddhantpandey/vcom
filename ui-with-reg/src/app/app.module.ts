@@ -14,6 +14,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PlansComponent } from './plans/plans.component';
 import { BillingComponent } from './billing/billing.component';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { Plan1Component } from './plan1/plan1.component';
+import { Plan2Component } from './plan2/plan2.component';
+import { Plan3Component } from './plan3/plan3.component';
+import { Plan4Component } from './plan4/plan4.component';
+import { PopularplansComponent } from './popularplans/popularplans.component';
 
 const paths: Routes = [
   { path: "", component: HomeComponent },
@@ -22,7 +28,12 @@ const paths: Routes = [
   { path: "register", component: RegisterComponent },
   { path: "billing", component: BillingComponent},
   { path: "billing/:serviceId/:customerId", component: BillingComponent},
-  { path: "plans", component: PlansComponent }
+  { path: "plans", component: PopularplansComponent },
+  { path: "plan1/:plan1/:price1", component: Plan1Component },
+  { path: "plan2/:plan2/:price2", component: Plan2Component },
+  { path: "plan3/:plan3/:price3", component: Plan3Component },
+  { path: "plan4/:plan4/:price4", component: Plan4Component },
+  { path: "plans/:id", component: PlansComponent }
 
 ];
 
@@ -35,7 +46,12 @@ const paths: Routes = [
     LoginhomeComponent,
     PlansComponent,
     BillingComponent,
-    
+    Plan1Component,
+    Plan2Component,
+    Plan3Component,
+    Plan4Component,
+    PopularplansComponent,
+   
   ],
   imports: [
     BrowserModule,
