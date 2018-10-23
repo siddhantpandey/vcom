@@ -26,6 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="customers")
@@ -93,8 +94,9 @@ public class Customer {
 	private Gender gender;
 	
 	//@OneToOne(mappedBy="customer",cascade=CascadeType.ALL,fetch=FetchType.LAZY) //two-way mapping to check retrieval
-	@JsonIgnore
+	
 	@OneToMany(mappedBy="services",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JsonManagedReference
 	private List<ServicesBought> services;
 	
 	
