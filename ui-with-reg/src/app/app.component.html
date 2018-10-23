@@ -1,128 +1,128 @@
-<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #ddecff; color: #3752a3" >
-    
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #ddecff; color: #3752a3">
+
   <a class="navbar-brand" routerLink="/">
-    <img src="assets/logo.png" height="30" class="d-inline-block align-top"
-      alt="vcom logo">
+    <img src="assets/logo.png" height="30" class="d-inline-block align-top" alt="vcom logo">
   </a>
-  
-  
-   
-    <div  id="navbarNav" class="collapse navbar-collapse">
-      
-      <ul class=" nav navbar-nav navbar-left">
-        <li class="nav-item active" >
-          <a class="nav-link" routerLink="/home" style="color:#3752a3">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/plans" style="color:#3752a3">Plans</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/billing" style="color:#3752a3">Pay Bills</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/aboutus" style="color:#3752a3">About Us</a>
-        </li>
-        <li class="nav-item">
-          <ng-template #content let-modal>
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label >Our Support Team</label>
-                      </div>
-                    </form>
-                  </div>
-                  
-                </ng-template>
-    <a class="nav-link" style="color:#3752a3" (click)="open(content)">Contact Us</a>
-  </li>
-</ul>
-<div style="margin-left: 300px;">
-<ul class="nav navbar-nav navbar-right">
-    <li *ngIf="!status">
-        <form class="form-inline">
-          <div class="md-form my-0">
-          <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" routerLink="/register">Register</button>
-          <ng-template #login let-modal>
-            <div class="modal-header">
-              <h4 class="modal-title" id="modal-basic-title">Login</h4>
-              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <form>
+
+
+
+  <div id="navbarNav" class="collapse navbar-collapse">
+
+    <ul class=" nav navbar-nav navbar-left">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home" style="color:#3752a3">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/plans" style="color:#3752a3">Plans</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/billing" style="color:#3752a3">Pay Bills</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/aboutus" style="color:#3752a3">About Us</a>
+      </li>
+      <li class="nav-item">
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label>Our Support Team</label>
+              </div>
+            </form>
+          </div>
+
+        </ng-template>
+        <a class="nav-link" style="color:#3752a3" (click)="open(content)">Contact Us</a>
+      </li>
+    </ul>
+    <div style="margin-left: 300px;">
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!status">
+          <form class="form-inline">
+            <div class="md-form my-0">
+              <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" routerLink="/register">Register</button>
+              <ng-template #login let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Login</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter email">
                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>
                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
+                </div>
+
+              </ng-template>
+              <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" (click)="openLogin(login)">Login</button>
             </div>
-            
-          </ng-template>
-          <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" (click)="openLogin(login)">Login</button>
-          </div>
-        </form>
-      
-    </li>
-          <li class="dropdown" *ngIf="status">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                
-                  <strong>Siddhant</strong>
-                  <span class="glyphicon glyphicon-chevron-down"></span>
-              </a>
-              <ul class="dropdown-menu">
-                  <li>
-                      <div class="navbar-login">
-                          <div class="row">
-                              <div class="col-lg-4">
-                                  <p class="text-center">
-                                      <span class="glyphicon glyphicon-user icon-size"></span>
-                                  </p>
-                              </div>
-                              <div class="col-lg-8">
-                                  <p class="text-left"><strong>Siddhant Pandey</strong></p>
-                                  <p class="text-left small">siddhantpandey59@gmail.com</p>
-                                  <p class="text-left">
-                                      <a href="#" class="btn btn-primary btn-block btn-sm">Profile</a>
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                      <div class="navbar-login navbar-login-session">
-                          <div class="row">
-                              <div class="col-lg-12">
-                                  <p>
-                                      <a href="#" class="btn btn-danger btn-block">Log Out</a>
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
-                  </li>
-              </ul>
-          </li>
-      </ul> 
-      
+          </form>
+
+        </li>
+        <li class="dropdown" *ngIf="status">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-user " aria-hidden="true"></i>
+            <strong>Siddhant</strong>
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <div class="navbar-login">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <p class="text-center">
+                      <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+                    </p>
+                  </div>
+                  <div class="col-lg-8">
+                    <p class="text-left"><strong>Siddhant Pandey</strong></p>
+                    <p class="text-left small">siddhantpandey59@gmail.com</p>
+                    <p class="text-left">
+                      <a href="#" class="btn btn-primary btn-block btn-sm">Profile</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <div class="navbar-login navbar-login-session">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <p>
+                      <a href="#" class="btn btn-danger btn-block">Log Out</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
     </div>
-       
-      
-    </div>
-  </nav>
-  <div style="padding-left:0.5px">
-      <router-outlet></router-outlet>
-    </div>
+
+
+  </div>
+</nav>
+<div style="padding-left:0.5px">
+  <router-outlet></router-outlet>
+</div>

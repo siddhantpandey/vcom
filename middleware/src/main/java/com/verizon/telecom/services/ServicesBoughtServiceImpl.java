@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.verizon.telecom.dao.ServicesBoughtDao;
+import com.verizon.telecom.model.Customer;
 import com.verizon.telecom.model.ServicesBought;
 
 
@@ -66,6 +67,13 @@ public class ServicesBoughtServiceImpl implements ServicesBoughtService{
 	public List<ServicesBought> getAllServices() {
 		return servicesDao.findAll();
 		
+	}
+
+
+
+	@Override
+	public List<ServicesBought> getServiceByCustomer(Customer cust) {
+		return servicesDao.getServiceByCustomer(cust);
 	}
 	
 	

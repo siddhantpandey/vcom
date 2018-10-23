@@ -2,6 +2,7 @@ package com.verizon.telecom.services;
 
 import java.util.List;
 
+import com.verizon.telecom.model.Customer;
 import com.verizon.telecom.model.ServicesBought;
 
 public interface ServicesBoughtService {
@@ -17,5 +18,6 @@ public interface ServicesBoughtService {
 	ServicesBought getServicesBoughtById(long servicesboughtId);
 
 	List<ServicesBought> getAllServices();
+	List<ServicesBought> getServiceByCustomer(Customer cust);
 
 }

@@ -1,0 +1,80 @@
+.outer {
+  float: left;
+  padding: 30px;
+  vertical-align: auto;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin-top: 15px;
+  margin: auto;
+  text-align: left;
+  padding: 20px;
+  font-family: arial;
+
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover,
+a:hover {
+  opacity: 0.7;
+}
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 58%;
+  margin: auto;
+  float: left;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #276582;
+  color: white;
+}
+
+.add-plan {
+  width: inherit;
+}

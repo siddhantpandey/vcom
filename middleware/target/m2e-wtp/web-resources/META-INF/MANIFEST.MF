@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: projectVcom-v1
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: verizon20
+Built-By: Verizon
 Implementation-Vendor-Id: com.verizon.telecom
-Build-Jdk: 1.8.0_144
+Build-Jdk: 1.8.0_161
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/projectVcom-v1
 Created-By: Maven Integration for Eclipse

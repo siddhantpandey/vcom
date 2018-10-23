@@ -1,6 +1,6 @@
 package com.verizon.telecom.restapi;
 
-import java.util.Collections	;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,23 +30,23 @@ public class VcomRestApi {
 
 	@Autowired
 	CustomerService custService;
-	
+
 	@Autowired
 	ServicesBoughtService sbService;
-	
+
 	@Autowired
 	BillService bService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Customer>> getAllCustomers() {
 		return new ResponseEntity<>(custService.getAllCustomers(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/services")
 	public ResponseEntity<List<ServicesBought>> getAllServices() {
 		return new ResponseEntity<>(sbService.getAllServices(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") long customerId) {
 		ResponseEntity<Customer> resp;
@@ -57,8 +57,7 @@ public class VcomRestApi {
 			resp = new ResponseEntity<>(c, HttpStatus.OK);
 		return resp;
 	}
-	
-	
+
 	@GetMapping("/{field}/{srhValue}")
 	public ResponseEntity<List<Customer>> getAllCustomers(@PathVariable("field") String fieldBy,
 			@PathVariable("srhValue") String searchValue) {
@@ -97,7 +96,8 @@ public class VcomRestApi {
 
 		return resp;
 	}
-	//Post for entering customer details
+
+	// Post for entering customer details
 	@PostMapping("/register")
 	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
 		ResponseEntity<Customer> resp = null;
@@ -120,9 +120,9 @@ public class VcomRestApi {
 		return resp;
 	}
 
-	//post mapping for entering service
+	// post mapping for entering service
 	@PostMapping("/services")
-	public ResponseEntity<ServicesBought> addService(@RequestBody ServicesBought service ) {
+	public ResponseEntity<ServicesBought> addService(@RequestBody ServicesBought service) {
 		ResponseEntity<ServicesBought> resp = null;
 
 		if (sbService.existsByServiceId(service.getServiceId())) {
@@ -130,7 +130,7 @@ public class VcomRestApi {
 		}
 
 		if (resp == null) {
-			//service.setServiceId(serviceId);
+			// service.setServiceId(serviceId);
 			ServicesBought sb = sbService.addServicesBought(service);
 			if (sb == null)
 				resp = new ResponseEntity<ServicesBought>(HttpStatus.BAD_REQUEST);
@@ -139,7 +139,8 @@ public class VcomRestApi {
 		}
 		return resp;
 	}
-	//mapping to update customer
+
+	// mapping to update customer
 	@PutMapping
 	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
 		ResponseEntity<Customer> resp = null;
@@ -166,21 +167,19 @@ public class VcomRestApi {
 		}
 		return resp;
 	}
-	
-	//mapping to update service bought
+
+	// mapping to update service bought
 	@PutMapping("/services")
 	public ResponseEntity<ServicesBought> updateService(@RequestBody ServicesBought service) {
 		ResponseEntity<ServicesBought> resp = null;
 
 		ServicesBought sb = sbService.getServicesBoughtById(service.getServiceId());
-				
-		if (service.getServiceId()!=sb.getServiceId()) {
+
+		if (service.getServiceId() != sb.getServiceId()) {
 			if (sbService.existsByServiceId(service.getServiceId())) {
 				resp = new ResponseEntity<ServicesBought>(HttpStatus.ALREADY_REPORTED);
 			}
 		}
-
-		
 
 		if (resp == null) {
 			sb = sbService.updateServicesBought(service);
@@ -203,7 +202,7 @@ public class VcomRestApi {
 
 		return resp;
 	}
-	
+
 	@DeleteMapping("/services/{id}")
 	public ResponseEntity<Void> deleteService(@PathVariable("id") long serviceId) {
 		ResponseEntity<Void> resp = null;
@@ -215,41 +214,42 @@ public class VcomRestApi {
 
 		return resp;
 	}
-	
-	
-	
-	//Get Mapping for bills per service
-		@GetMapping("/getbillsForService/{cid}/{sid}")
-		public ResponseEntity<List<Bill>> fetchBillForParticularService(@PathVariable("cid") long customerId, @PathVariable("sid") long serviceId){
-			return new ResponseEntity<>(bService.getBillsOfParticularService(customerId, serviceId), HttpStatus.OK);
-		}
-		
-		@GetMapping("/getAllbills/{id}")
-		public ResponseEntity<List<Bill>> fetchAllBills(@PathVariable("id") long customerId){
-			return new ResponseEntity<>(bService.getAllBills(customerId), HttpStatus.OK);
-		}
-		
-		
-		//Post for paying bills
-			@PostMapping("/paybill")
-			public ResponseEntity<Bill> payBill(@RequestBody Bill bill) {
-				ResponseEntity<Bill> resp = null;
 
-				if (bService.existsByBillId(bill.getBillId())) {
-					resp = new ResponseEntity<Bill>(HttpStatus.ALREADY_REPORTED);
-				}
-				
-				if (resp == null) {
-					Bill b = bService.payBill(bill);
-					if (b == null)
-						resp = new ResponseEntity<Bill>(HttpStatus.BAD_REQUEST);
-					else
-						resp = new ResponseEntity<Bill>(b, HttpStatus.OK);
-				}
-				return resp;
-			}
-			
-			
-			
-	
+	// Get Mapping for bills per service
+	@GetMapping("/getbillsForService/{cid}/{sid}")
+	public ResponseEntity<List<Bill>> fetchBillForParticularService(@PathVariable("cid") long customerId,
+			@PathVariable("sid") long serviceId) {
+		return new ResponseEntity<>(bService.getBillsOfParticularService(customerId, serviceId), HttpStatus.OK);
+	}
+
+	@GetMapping("/getAllbills/{id}")
+	public ResponseEntity<List<Bill>> fetchAllBills(@PathVariable("id") long customerId) {
+		return new ResponseEntity<>(bService.getAllBills(customerId), HttpStatus.OK);
+	}
+
+	// Post for paying bills
+	@PostMapping("/paybill")
+	public ResponseEntity<Bill> payBill(@RequestBody Bill bill) {
+		ResponseEntity<Bill> resp = null;
+
+		if (bService.existsByBillId(bill.getBillId())) {
+			resp = new ResponseEntity<Bill>(HttpStatus.ALREADY_REPORTED);
+		}
+
+		if (resp == null) {
+			Bill b = bService.payBill(bill);
+			if (b == null)
+				resp = new ResponseEntity<Bill>(HttpStatus.BAD_REQUEST);
+			else
+				resp = new ResponseEntity<Bill>(b, HttpStatus.OK);
+		}
+		return resp;
+	}
+
+	@GetMapping("/getServiceByCustomerId/{id}")
+	public ResponseEntity<List<ServicesBought>> getServiceByCustomerId(@PathVariable("id") long customerId) {
+		Customer cust = custService.getCustomerByCustomerId(customerId);
+		return new ResponseEntity<>(sbService.getServiceByCustomer(cust), HttpStatus.OK);
+	}
+
 }

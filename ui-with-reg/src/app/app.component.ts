@@ -11,7 +11,7 @@ export class AppComponent {
   closeResult: string;
   status: boolean;
   constructor(private modalService: NgbModal) {
-    this.status=false;
+    this.status=true;
   }
 
   open(content) {
