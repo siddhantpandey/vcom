@@ -10,6 +10,7 @@ public interface BillService {
 	List<Bill> getBillsOfParticularServiceMonthWise(Months month);
 	List<Bill> getAllBills(long customerId);
 	Bill payBill(Bill bill);
+	Bill getBillByBillId(long billId);
 	boolean existsByBillId(long billId);
 
 	//boolean deleteBill(long customerId);

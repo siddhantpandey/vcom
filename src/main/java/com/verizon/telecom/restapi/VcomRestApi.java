@@ -277,6 +277,17 @@ public class VcomRestApi {
 		return new ResponseEntity<>(bService.getAllBills(customerId), HttpStatus.OK);
 	}
 	
+	@GetMapping("/getBill/{id}")
+	public ResponseEntity<Bill> getBillById(@PathVariable("id") long billId) {
+		ResponseEntity<Bill> resp;
+		Bill b = bService.getBillByBillId(billId);
+		if (b == null)
+			resp = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		else
+			resp = new ResponseEntity<>(b, HttpStatus.OK);
+		return resp;
+	}
+	
 	
 	//Post for paying bills
 		@PostMapping("/paybill")
