@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { TelecomService } from '../service/telecom.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Plan } from '../model/plan';
 
 @Component({
@@ -14,9 +14,18 @@ export class UserProfileComponent implements OnInit {
   plans: Plan[];
   userLogo: string;
 
-  constructor(telserv: TelecomService, activatedRoute: ActivatedRoute) {
+  constructor(
+    private ts: TelecomService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
     this.userLogo = 'assets/user.jpg';
   }
 
   ngOnInit() {}
+
+  deleteService(serviceId: number) {
+    this.ts.deleteServiceByServiceId(serviceId);
+    this.router.navigate(['/plans']);
+  }
 }

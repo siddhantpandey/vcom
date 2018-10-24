@@ -5,9 +5,9 @@
     <h1>Name: {{user.customerFirstName}} {{user.customerLastName}}</h1>
     <p class="title">Username: {{user.username}}</p>
     <p>Customer ID: {{user.customerId}}</p>
-    <p><i class="fa fa-envelope " aria-hidden="true"></i>{{user.emailId}}</p>
-    <p><i class="fa fa-mobile fa-2x" aria-hidden="true"></i>{{user.customerMobileNumber}}</p>
-    <p><i class="fa fa-birthday-cake" aria-hidden="true"></i>{{user.customerDateOfBirth}}</p>
+    <p><i class="fa fa-envelope " aria-hidden="true"></i>:{{user.emailId}}</p>
+    <p><i class="fa fa-mobile fa-2x" aria-hidden="true"></i>:{{user.customerMobileNumber}}</p>
+    <p><i class="fa fa-birthday-cake" aria-hidden="true"></i>:{{user.customerDateOfBirth}}</p>
     <button type="button" class="btn btn-default btn-sm" routerLink="/register">
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Details</button>
   </div>
@@ -30,7 +30,7 @@
       <td>R399</td>
       <td>27-06-2010</td>
       <td><a href="#">
-          <span class="glyphicon glyphicon-trash" style="margin-left: 10px"></span>
+          <i class="fa fa-trash" aria-hidden="true"></i>
         </a></td>
     </tr>
     <tr *ngFor="let a of plans">
@@ -38,8 +38,8 @@
       <td>{{a.services}}</td>
       <td>{{a.plans}}</td>
       <td>{{a.packages}}</td>
-      <td>{{a.dateOfActivation}}<a href="#">
-          <span class="glyphicon glyphicon-trash"></span>
+      <td>{{a.dateOfActivation}}<a href="#" (click)="deleteService()" [(ngModel)]="a.serviceId">
+          <i class="fa fa-trash" aria-hidden="true"></i>
         </a></td>
     </tr>
   </table>
